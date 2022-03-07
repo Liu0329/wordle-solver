@@ -1,3 +1,14 @@
+[Wordle](https://www.nytimes.com/games/wordle/index.html) is a popular online word guessing game. To win, you should guess the word in six tries.
+Each guess must be a valid five-letter word.
+After each guess, the color of the tiles will change to show how close your guess was to the word.
+green means the letter is in the word and in the correct spot.
+yellow means the letter is in the but in the wrong spot.
+grey means the letter is not in the word in any spot.
+
+![企业微信截图_16466580191859](https://user-images.githubusercontent.com/8122099/157039219-53e3ac21-4388-440a-86f0-e5c16bab3aa3.png)
+
+
+
 # wordle-solver
 Powerful worlde-solver in python on terminal. Inspired by [3Blue1Brown's work](https://www.youtube.com/watch?v=v68zYyaEmEA), I use maxmum entropy to generate the next guess. It can help you win with least attempts statistically. And, assuming all target words share the same chance, I do not use word frequency to reweight them. In 2315/2315 words mode, the winning rate is 100%.
 
