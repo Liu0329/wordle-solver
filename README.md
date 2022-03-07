@@ -23,7 +23,7 @@ You can
 
 ### 3. experiment: get overall performance with all words in the word list
 `python experiment.py`
-|letter |target words| legal words| win | lose | winning rate(<=6) | avg attempts |min/max attempts |
+|letters |target words| legal words| win | lose | winning rate(<=6) | avg attempts |min/max attempts |
 |  ----  | ----  |----  | ----  | ----  |----  | ----  | ----  |
 | 4  | 3076 | 3076 | 3051 | 25 | 99.19% | 4.40 |1/7|
 | 5  | 2315 | 2315 | 2315 | 0  | 100.0% | 3.57 |1/6|
