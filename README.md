@@ -5,12 +5,10 @@ green means the letter is in the word and in the correct spot.
 yellow means the letter is in the but in the wrong spot.
 grey means the letter is not in the word in any spot.
 
-![企业微信截图_16466580191859](https://user-images.githubusercontent.com/8122099/157039219-53e3ac21-4388-440a-86f0-e5c16bab3aa3.png)
-
-
+![企业微信截图_164665837678](https://user-images.githubusercontent.com/8122099/157040041-e3ddafb1-d57d-4fab-bcad-345e750c8e37.png)
 
 # wordle-solver
-Powerful worlde-solver in python on terminal. Inspired by [3Blue1Brown's work](https://www.youtube.com/watch?v=v68zYyaEmEA), I use maxmum entropy to generate the next guess. It can help you win with least attempts statistically. And, assuming all target words share the same chance, I do not use word frequency to reweight them. In 2315/2315 words mode, the winning rate is 100%.
+This powerful worlde-solver is written in python, run on terminal. Inspired by [3Blue1Brown's work](https://www.youtube.com/watch?v=v68zYyaEmEA), I use maxmum entropy to generate the next guess. It can help you win with least attempts statistically. And, assuming all target words share the same chance, I do not use word frequency to reweight them. In 2315/2315 words mode, the winning rate is 100%.
 
 You can
 ### 1. play: with 3|4|5|6|7|8 (or more) letters of wordle
