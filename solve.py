@@ -18,5 +18,7 @@ if __name__ == '__main__':
             break
         wordle.words = wordle.recommend_guess(guess, feedback)
         # print(wordle.words)
+        # import pdb
+        # pdb.set_trace()
         if len(wordle.words) > 2:
             guesses = wordle.find_maximum_entropy_words_mp()

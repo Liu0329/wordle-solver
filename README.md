@@ -2,7 +2,7 @@
 Each guess must be a valid five-letter word.
 After each guess, the color of the tiles will change to show how close your guess was to the word.
 green means the letter is in the word and in the correct spot.
-yellow means the letter is in the but in the wrong spot.
+yellow means the letter is in the word but in the wrong spot.
 grey means the letter is not in the word in any spot.
 
 ![企业微信截图_164665837678](https://user-images.githubusercontent.com/8122099/157040041-e3ddafb1-d57d-4fab-bcad-345e750c8e37.png)
@@ -34,7 +34,7 @@ You can
 
 After removing rare words, current online wordle uses 2315 words for the targets, but 12972 words as legal try, as the 3rd line. The only word it fails is **jolly**. The reason is that there are so many *olly: polly, holly, golly, wolly, folly, jolly, lolly, molly ... 
 
-Interestingly, the shorter the words, the harder it grows for the computer. Because there are more similar words, for instance: five, bide, tide, aide, kite, wine, wide, pide...
+Interestingly, the shorter the words, the harder it grows. Because there are more similar words, for instance: five, bide, tide, aide, kite, wine, wide, pide...
 
 ### online versions:
 

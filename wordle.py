@@ -62,17 +62,29 @@ class Wordle:
         print(Fore.WHITE + 'Welcome to the game of wordle with 3|4|5|6|7|8 letters.')
         print('Print the number of letters you want to play: (default 5)')
         length = int(input() or '5')
+        self.mode = 'other'
         if length == 5:
             # self.all_words = [line.strip() for line in open('orig_wordle_list.txt')]
-            print('Choose 0:easy 1:standard 2:hard (default easy)' or '0')
+            print('Choose 0:easy (2315 common words as targets also for use) \n'
+                  '       1:standard (2315 targets, 1w+ words to use, same as online wordle) \n'
+                  '       2:hard (every guess has to obey the showed colors, same as online wordle hard mode) \n'
+                  '       3:rare (the target is from 1w+ words)\n'
+                  '       (default easy)' or '0')
             mode = int(input() or '0')
             if mode == 0:
+                self.mode = 'easy'
                 self.target_words = [line.strip() for line in open('wordle_list_2315.txt')]
                 self.all_words = [line.strip().split()[0] for line in open('5letter_2315_entropy.txt')]
             elif mode == 1:
+                self.mode = 'standard'
+                self.target_words = [line.strip() for line in open('wordle_list_2315.txt')]
+                self.all_words = [line.strip().split()[0] for line in open('5letter_entropy.txt')]
+            elif mode == 2:
+                self.mode = 'hard'
                 self.target_words = [line.strip() for line in open('wordle_list_2315.txt')]
                 self.all_words = [line.strip().split()[0] for line in open('5letter_entropy.txt')]
             else:
+                self.mode = 'rare'
                 self.target_words = [line.strip() for line in open('orig_wordle_list.txt')]
                 self.all_words = [line.strip().split()[0] for line in open('5letter_entropy.txt')]
         else:
@@ -146,12 +158,14 @@ class Wordle:
             if mark == 'o':
                 condition[i] = guess[i]
                 have.add(guess[i])
-            elif mark == 'x':
+
+        for i, mark in enumerate(feedback):
+            if mark == 'x' and guess[i] not in have:
                 not_have.add(guess[i])
-            else:  # '-'
+            elif mark == '-':
                 condition[i] = '~' + guess[i]
                 have.add(guess[i])
-    
+
         cands = self.filter_words(condition, have, not_have)
         return cands  # or random sample
 
@@ -197,7 +211,7 @@ class Wordle:
 
     def compute_entropy_a_guess(self, guess):
         counts = defaultdict(int)
-        for target in self.words:  # iter through whole list
+        for target in self.words:  # iter through legal list
             _, mark, _, _, _ = self.get_guess_result(target, guess)
             counts[''.join(mark)] += 1
         entropy = self.compute_entropy(counts)
@@ -206,7 +220,10 @@ class Wordle:
 
     def find_maximum_entropy_words_mp(self):
         with Pool(cpu_count()) as pool:
-            dict_en = pool.starmap(self.compute_entropy_a_guess, [(guess, ) for guess in self.all_words])
+            if self.mode == 'hard':
+                dict_en = pool.starmap(self.compute_entropy_a_guess, [(guess,) for guess in self.words])
+            else:
+                dict_en = pool.starmap(self.compute_entropy_a_guess, [(guess, ) for guess in self.all_words])
         dict_en = dict(itertools.chain(*map(dict.items, dict_en)))  # gather results
         large_en = sorted(dict_en, key=dict_en.get, reverse=True)
         return large_en
@@ -238,5 +255,5 @@ class Wordle:
     
             if valid and self.word_has_letter(word, have) and self.word_has_no_letter(word, not_have):
                 candidates.append(word)
-    
+
         return candidates
