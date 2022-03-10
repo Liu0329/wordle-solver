@@ -27,10 +27,15 @@ You can
 |  ----  | ----  |----  | ----  | ----  |----  | ----  | ----  |
 | 4  | 3076 | 3076 | 3051 | 25 | 99.19% | 4.40 |1/7|
 | 5  | 2315 | 2315 | 2315 | 0  | 100.0% | 3.57 |1/6|
-| **5**  | **2315** | **12972** | 2315 | 1  | 99.96% | 4.04 |2/7|
+| 5(*) | 2315 | 12972 | 2315 | 1  | 100.0% | 3.54 |2/5|
+| 5(#) | 2315 | 12972 | 2315 | 1  | 99.96% | 4.04 |2/7|
 | 5  | 12972| 12972| 12936 | 36  | 99.72% |4.15 |1/7|
 | 6  | 7634 | 7634 | 7634 | 0  | 100.0% | 3.40 |1/6|
 | 7  | 8981 | 8981 | 8981 | 0  | 100.0% | 3.10 |1/5|
+
+(*): The computer assumes there are 2315 targets.
+
+(#): The computer assumes there are 12972 targets.
 
 After removing rare words, current online wordle uses 2315 words for the targets, but 12972 words as legal try, as the 3rd line. The only word it fails is **jolly**. The reason is that there are so many *olly: polly, holly, golly, wolly, folly, jolly, lolly, molly ... 
 
